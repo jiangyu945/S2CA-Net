@@ -34,7 +34,7 @@ In this paper we propose a novel *Shape-Scale Co-Awareness Network* that integra
 ### Multi-level Context Aggregator
 ![MCA](https://github.com/jiangyu945/S2CA-Net/blob/a99748cfbc13f40f8bec5f4bcd491d43d6451ee1/img/MCA.png)
 ### Multi-Scale Attentive Deformable Convolution
-![MS-ADC](https://github.com/jiangyu945/S2CA-Net/blob/a99748cfbc13f40f8bec5f4bcd491d43d6451ee1/img/MS-ADC.png)
+![MS-ADC](https://github.com/jiangyu945/S2CA-Net/blob/c00b72b1581d8adea11b6644ac98308ef843be6e/img/MS-ADC.png)
 
 ## Results
 ### Quantitative Results
