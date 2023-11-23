@@ -75,7 +75,7 @@ python train.py --model s2ca_net --patch_test --ds --trainset
 ```python
 python train.py --model s2ca_net --patch_test --ds -c CKPT
 ```
-this will load the pretrained weights as well as the status of optimizer and scheduler.
+this will load the pretrained weights as well as the status of optimizer, scheduler and epoch.
 #### PyTorch-native AMP training
 ```python
 python train.py --model s2ca_net --patch_test --ds --mixed
