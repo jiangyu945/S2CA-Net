@@ -33,7 +33,7 @@ In this paper we propose a novel *Shape-Scale Co-Awareness Network* that integra
 ![LGSM](https://github.com/jiangyu945/S2CA-Net/blob/971c0ac07c91ee0c1aab2a00ddc31d57d640937f/img/LGSM.png)
 ### Multi-level Context Aggregator
 ![MCA](https://github.com/jiangyu945/S2CA-Net/blob/0885948ed7f7042763b6ea28a2b2a21aef49cb86/img/MCA.png)
-![EAS-MLP](https://github.com/jiangyu945/S2CA-Net/blob/0885948ed7f7042763b6ea28a2b2a21aef49cb86/img/MCA.png "The detail of EAS-MLP.")
+![EAS-MLP](https://github.com/jiangyu945/S2CA-Net/blob/08d955d0e9a89e5f0addf0aa19d7e86e6a4f26f1/img/EAS-MLP.png "The detail of EAS-MLP.")
 ### Multi-Scale Attentive Deformable Convolution
 ![MS-ADC](https://github.com/jiangyu945/S2CA-Net/blob/c00b72b1581d8adea11b6644ac98308ef843be6e/img/MS-ADC.png)
 
