@@ -40,11 +40,13 @@ In this paper we propose a novel *Shape-Scale Co-Awareness Network* that integra
 
 ## Results
 ### Quantitative Results
-![Snipaste_2021-10-12_15-47-15](https://user-images.githubusercontent.com/53631393/136914282-3dd5a697-711b-4653-adb8-a6d2c98705f5.png)
+![Comparison_BraTS_2019](https://github.com/jiangyu945/S2CA-Net/blob/c257a2c983c4852fa26a585e667a282690c2a61d/img/Comparison_BraTS2019.png)
+![Comparison_BraTS_2020](https://github.com/jiangyu945/S2CA-Net/blob/c257a2c983c4852fa26a585e667a282690c2a61d/img/Comparison_BraTS2020.png)
 ### Qualitative Results
-![vis3d](https://user-images.githubusercontent.com/53631393/136914543-023500b6-9a57-4f21-9f94-77961c7e9917.png)
+![vis3d](https://github.com/jiangyu945/S2CA-Net/blob/c257a2c983c4852fa26a585e667a282690c2a61d/img/Visualization_Comparison.png)
 ### Ablation Analysis
-![Snipaste_2021-10-12_15-47-32](https://user-images.githubusercontent.com/53631393/136914298-b76690c2-987d-4a3b-98da-9ab42f44ed10.png)
+![Ablation_component](https://github.com/jiangyu945/S2CA-Net/blob/c257a2c983c4852fa26a585e667a282690c2a61d/img/Ablation_component.png)
+![Ablation_model_scale](https://github.com/jiangyu945/S2CA-Net/blob/c257a2c983c4852fa26a585e667a282690c2a61d/img/Ablation_model_scale.png)
 
 ## Usage
 ### Data Preparation
