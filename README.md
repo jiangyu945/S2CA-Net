@@ -28,7 +28,7 @@ This repo contains the implementation of 3D segmentation of BraTS 2019, BraTS 20
 ## Methods
 In this paper we propose a novel *Shape-Scale Co-Awareness Network* that integrates CNN, Transformer, and MLP to synchronously capture shape-aware features and scale-aware features to cope with the pattern-agnostic challenges in brain tumor image segmentation..  
 ### Network Framework
-![network](https://github.com/jiangyu945/S2CA-Net/blob/6b56c009ea9bc1f7a2adfb7931cbc84b64fe22ea/Framework.png)
+![network](https://github.com/jiangyu945/S2CA-Net/blob/dc599ba9c69fba880a10a0f2b2891d8d4deee467/img/Framework.png)
 ### Local-Global Scale Mixer
 ![LGSM](https://user-images.githubusercontent.com/53631393/136913725-04e109d3-8081-49ca-948c-54e866692200.png)
 ### Multi-level Context Aggregator
