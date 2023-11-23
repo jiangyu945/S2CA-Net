@@ -30,7 +30,7 @@ In this paper we propose a novel *Shape-Scale Co-Awareness Network* that integra
 ### Network Framework
 ![network](https://github.com/jiangyu945/S2CA-Net/blob/c4f6b12edd45bc8e1a33e1d1883d6c1d611fd5e3/img/Framework.png)
 ### Local-Global Scale Mixer
-![LGSM](https://github.com/jiangyu945/S2CA-Net/blob/a99748cfbc13f40f8bec5f4bcd491d43d6451ee1/img/LGSM.png)
+![LGSM](https://github.com/jiangyu945/S2CA-Net/blob/971c0ac07c91ee0c1aab2a00ddc31d57d640937f/img/LGSM.png)
 ### Multi-level Context Aggregator
 ![MCA](https://github.com/jiangyu945/S2CA-Net/blob/a99748cfbc13f40f8bec5f4bcd491d43d6451ee1/img/MCA.png)
 ### Multi-Scale Attentive Deformable Convolution
