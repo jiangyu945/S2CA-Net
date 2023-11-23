@@ -39,21 +39,21 @@ def parse_args():
     ## Chose run device
     On_Device = '3090'  # A4000 | 3090 | 3090_Dell
     if On_Device == '3090':
-        parser.add_argument('--root', default="/home/ff/dataset/jy/BraTS2019/MICCAI_BraTS2019_TrainingData",
+        parser.add_argument('--root', default="/home/ff/dataset/jy/BraTS2019/MICCAI_BraTS_2019_Data_Training_Merge",
                             help='train dataset path')
-        parser.add_argument('--model_save_path', default='/datasets/jy/model_pth', type=str, help='resume training')
+        # parser.add_argument('--model_save_path', default='/datasets/jy/model_pth', type=str, help='resume training')
         parser.add_argument('--ncpu', type=int, default=4, help='number of workers for dataloader')
     elif On_Device == '3090_Dell':
         # parser.add_argument('--root', default="/home/ff/jy/datasets/BraTS2019/MICCAI_BraTS_2019_Data_Training_Merge",  # 2019
         #                     help='train dataset path')
         parser.add_argument('--root', default="/home/ff/jy/datasets/BraTS2019/MICCAI_BraTS2019_TrainingData",
                             help='train dataset path')
-        parser.add_argument('--model_save_path', default='models', type=str, help='resume training')
+        # parser.add_argument('--model_save_path', default='models', type=str, help='resume training')
         parser.add_argument('--ncpu', type=int, default=4, help='number of workers for dataloader')
     elif On_Device == 'A4000':
         parser.add_argument('--root', default="/usr/jy/code/UNet3d_BraTS/train", help='train dataset path')  # 2019
         # parser.add_argument('--root', default="/home/ff/jy/datasets/Preprocess_BraTS/2019/3D/train", help='train dataset path')
-        parser.add_argument('--model_save_path', default='models', type=str, help='resume training')
+        # parser.add_argument('--model_save_path', default='models', type=str, help='resume training')
         parser.add_argument('--ncpu', type=int, default=4, help='number of workers for dataloader')
     else:
         raise Exception('[error]Device can not fond!')
@@ -131,7 +131,7 @@ def main():
     else:
         save_folder = f'ds_{is_ds}_val'
     # save_dir = './checkpoints/{}/{}'.format(model_name, save_folder)
-    save_dir = './checkpoints/{}/{}/{}'.format(dataset_name, model_name, save_folder)
+    save_dir = f'./checkpoints/{dataset_name}/{model_name}/{save_folder}'
     os.makedirs(save_dir, exist_ok=True)
 
     print('-' * 30)
@@ -327,7 +327,7 @@ def main():
                 outputs = model(inputs)
                 if model_name in ('panet', 'cascade'):
                     binary_loss = binary_criterion(outputs['stage1'], binary_targets)
-                multi_loss = model.get_multi_loss(criterion, outputs, targets, is_ds=is_ds)
+                multi_loss = model.get_multi_loss(criterion, outputs, targets, is_ds)
                 if model_name in ('panet', 'cascade'):
                     binary_loss.backward(retain_graph=True)
                 multi_loss.backward()
@@ -366,7 +366,7 @@ def main():
 
                     # using patch-based inference or not
                     if patch_test:
-                        val_outputs = sliding_window_inference(val_inputs, patch_size, 2,
+                        val_outputs = sliding_window_inference(val_inputs, patch_size, batch_size,
                                                                predictor=model.predictor, overlap=patch_overlap)
                     else:
                         val_outputs = model(val_inputs)['out']

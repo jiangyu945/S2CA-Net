@@ -1621,7 +1621,7 @@ class UNet_LGSM_MCA_Deform(SegmentationNetwork):
 
 class UNet_LGSM_MCA_MSADC_Plus(SegmentationNetwork):
     def __init__(self, num_classes, input_channels=3, channels=(16, 32, 64, 128), use_deconv=False,
-                 strides=(1, 2, 2, 2), embed_dim=[360, 512], layers=[6, 2], **kwargs):  # [360, 512]  [6, 2]  | [256,512] [4,2]
+                 strides=(1, 2, 2, 2), embed_dim=[256, 512], layers=[4, 2], **kwargs):  # [360, 512]  [6, 2]  | [256,512] [4,2]
         super().__init__()
         self.backbone = Backbone_L4_LGSM(input_channels=input_channels, channels=channels, strides=strides,
                                            embed_dim=embed_dim, light=True, **kwargs)
