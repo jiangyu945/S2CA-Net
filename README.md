@@ -13,10 +13,10 @@
 manuscript link:  
 - To be supplemented ...
 
-**Description**
+**Description:**
 This repo contains the implementation of 3D segmentation of BraTS 2019, BraTS 2020 with the proposed *Shape-Scale Co-Awareness Network*. 
 
-**Citation**  
+**Citation:**  
 If you use our code, please cite the paper:
 > @ARTICLE{98521166,  
   author={Zhou, Lifang and Jiang, Yu and Li, Weisheng and Hu, Jun and Zheng, Shenghai},  
