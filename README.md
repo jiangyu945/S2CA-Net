@@ -121,6 +121,5 @@ Inference with Test Time Augmentation(TTA).
 python inference.py --model s2ca_net --patch_test --validation -c CKPT --tta
 ```
 ### Reference
-[PANet](https://github.com/hsiangyuzhao/PANet)
-
+[PANet](https://github.com/hsiangyuzhao/PANet)  
 [TransBTS](https://github.com/Rubics-Xuan/TransBTS)
