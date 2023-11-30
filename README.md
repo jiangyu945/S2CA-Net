@@ -35,14 +35,7 @@ In this paper we propose a novel *Shape-Scale Co-Awareness Network* that integra
 ### Ablation Analysis
 ![Ablation_component](https://github.com/jiangyu945/S2CA-Net/blob/c257a2c983c4852fa26a585e667a282690c2a61d/img/Ablation_component.png)
 ![Ablation_model_scale](https://github.com/jiangyu945/S2CA-Net/blob/c257a2c983c4852fa26a585e667a282690c2a61d/img/Ablation_model_scale.png)
-
-<center>
-<figure>
-<img src="https://github.com/jiangyu945/S2CA-Net/blob/c257a2c983c4852fa26a585e667a282690c2a61d/img/Ablation_model_scale.png" />
-<img src="https://github.com/jiangyu945/S2CA-Net/blob/c257a2c983c4852fa26a585e667a282690c2a61d/img/Ablation_model_scale.png" />
-</figure>
-</center>
-
+![Ablation_model_scale](https://github.com/jiangyu945/S2CA-Net/blob/87203a865a6e189e6ee46bc10f11350d43c8c7da/img/Ablation.png)
 ## Usage
 ### Installation
 Install the necessary python packages as defined in environment.yaml. We recommend using conda. You can create the environment using
