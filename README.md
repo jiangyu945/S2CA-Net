@@ -23,6 +23,8 @@ This repo contains the Pytorch implementation of 3D segmentation of BraTS 2019, 
 In this paper we propose a novel *Shape-Scale Co-Awareness Network* that integrates CNN, Transformer, and MLP to synchronously capture shape-aware features and scale-aware features to cope with the pattern-agnostic challenges in brain tumor image segmentation.  
 ### Network Framework
 ![network](https://github.com/jiangyu945/S2CA-Net/blob/c4f6b12edd45bc8e1a33e1d1883d6c1d611fd5e3/img/Framework.png)
+### Multi-level Context Aggregator
+![MCA](https://github.com/jiangyu945/S2CA-Net/blob/9902e132d0fc63c4c7f8c2bbde536ad37037f3c0/img/MCA_Overall.png)
 ### Enhanced Axial Shifted MLP
 ![EAS-MLP](https://github.com/jiangyu945/S2CA-Net/blob/08d955d0e9a89e5f0addf0aa19d7e86e6a4f26f1/img/EAS-MLP.png)
 
