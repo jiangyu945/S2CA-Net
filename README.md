@@ -44,6 +44,13 @@ In this paper we propose a novel *Shape-Scale Co-Awareness Network* that integra
 ![Ablation_model_scale](https://github.com/jiangyu945/S2CA-Net/blob/c257a2c983c4852fa26a585e667a282690c2a61d/img/Ablation_model_scale.png)
 
 ## Usage
+### Installation
+Install the necessary python packages as defined in environment.yaml. We recommend using conda. You can create the environment using
+'''
+conda env create -f environment.yml
+'''
+If you run into problems, you can try using different versions of these packages.
+
 ### Data Preparation
 Please download BraTS 2019, BraTS 2020 data according to https://www.med.upenn.edu/cbica/brats2019/registration.html and https://www.med.upenn.edu/cbica/brats2020/registration.html.  
 Unzip downloaded data at `./dataset` folder (please create one) and remove all the csv files in the folder, or it will cause errors.
