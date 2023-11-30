@@ -11,10 +11,13 @@
 > *Corresponding Author: Lifang Zhou
 
 manuscript link:  
--   
+- To be supplemented ...
 
-This repo contains the implementation of 3D segmentation of BraTS 2019, BraTS 2020 with the proposed *Shape-Scale Co-Awareness Network*.  
-**If you use our code, please cite the paper:**  
+**Description**
+This repo contains the implementation of 3D segmentation of BraTS 2019, BraTS 2020 with the proposed *Shape-Scale Co-Awareness Network*. 
+
+**Citation**  
+If you use our code, please cite the paper:
 > @ARTICLE{98521166,  
   author={Zhou, Lifang and Jiang, Yu and Li, Weisheng and Hu, Jun and Zheng, Shenghai},  
   journal={},   
@@ -26,7 +29,7 @@ This repo contains the implementation of 3D segmentation of BraTS 2019, BraTS 20
   doi={}}  
 
 ## Methods
-In this paper we propose a novel *Shape-Scale Co-Awareness Network* that integrates CNN, Transformer, and MLP to synchronously capture shape-aware features and scale-aware features to cope with the pattern-agnostic challenges in brain tumor image segmentation..  
+In this paper we propose a novel *Shape-Scale Co-Awareness Network* that integrates CNN, Transformer, and MLP to synchronously capture shape-aware features and scale-aware features to cope with the pattern-agnostic challenges in brain tumor image segmentation.  
 ### Network Framework
 ![network](https://github.com/jiangyu945/S2CA-Net/blob/c4f6b12edd45bc8e1a33e1d1883d6c1d611fd5e3/img/Framework.png)
 ### Local-Global Scale Mixer
