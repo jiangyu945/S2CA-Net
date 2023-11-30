@@ -27,6 +27,8 @@ from utils.iterator import MetricMeter, set_random_seed, CosineAnnealingWithWarm
 import setproctitle
 from utils.log import Log
 
+from utils.metric import dice_coef
+
 import torch.multiprocessing
 torch.multiprocessing.set_sharing_strategy('file_system')
 
@@ -58,7 +60,7 @@ def parse_args():
     else:
         raise Exception('[error]Device can not fond!')
 
-    parser.add_argument('--interval', type=int, default=10,
+    parser.add_argument('--interval', type=int, default=1,
                         help='interval for validation')
     parser.add_argument('--mixed', action="store_true",
                         help='whether to use mixed precision training to save video memory')
@@ -364,68 +366,89 @@ def main():
                     inputs_flair = batch_data['flair'].to(device)
                     val_inputs = torch.cat([inputs_t1, inputs_t2, inputs_t1ce, inputs_flair], dim=1)
 
+                    print('====1====')
                     # using patch-based inference or not
                     if patch_test:
+                        print('====2====')
                         val_outputs = sliding_window_inference(val_inputs, patch_size, batch_size,
                                                                predictor=model.predictor, overlap=patch_overlap)
                     else:
-                        val_outputs = model(val_inputs)['out']
+                        if model_name in ['unet', 'attention_unet', 'panet']:
+                            val_outputs = model(val_inputs)['out']
+                        else:
+                            val_outputs = model(val_inputs)['out'][-1]
 
+                    print('====3====')
                     predictions = post_trans(val_outputs)
+                    print('====4====')
                     if not optimize_overlap:
                         predictions = overlap_labels(predictions)
                     ground_truth = overlap_labels(one_hot(batch_data['label'].to(device), num_classes=4))
+                    print('====5====')
+
+                    dice_et = dice_coef(y_pred=predictions[:, 1:2, ...], y=ground_truth[:, 1:2, ...])
+                    dice_tc = dice_coef(y_pred=predictions[:, 2:3, ...], y=ground_truth[:, 2:3, ...])
+                    dice_wt = dice_coef(y_pred=predictions[:, 3:4, ...], y=ground_truth[:, 3:4, ...])
+                    print('====6====')
 
                     # compute dice and hausdorff distance 95
-                    dice_et, dice_et_not_nan = dice_metric(y_pred=predictions[:, 1:2, ...], y=ground_truth[:, 1:2, ...])
-                    dice_tc, dice_tc_not_nan = dice_metric(y_pred=predictions[:, 2:3, ...], y=ground_truth[:, 2:3, ...])
-                    dice_wt, dice_wt_not_nan = dice_metric(y_pred=predictions[:, 3:4, ...], y=ground_truth[:, 3:4, ...])
+                    # dice_et, dice_et_not_nan = dice_metric(y_pred=predictions[:, 1:2, ...], y=ground_truth[:, 1:2, ...])
+                    # dice_tc, dice_tc_not_nan = dice_metric(y_pred=predictions[:, 2:3, ...], y=ground_truth[:, 2:3, ...])
+                    # dice_wt, dice_wt_not_nan = dice_metric(y_pred=predictions[:, 3:4, ...], y=ground_truth[:, 3:4, ...])
 
-                    hd95_et, hd95_et_not_nan = hausdorff_metric(y_pred=predictions[:, 1:2, ...],
-                                                                y=ground_truth[:, 1:2, ...])
-                    hd95_tc, hd95_tc_not_nan = hausdorff_metric(y_pred=predictions[:, 2:3, ...],
-                                                                y=ground_truth[:, 2:3, ...])
-                    hd95_wt, hd95_wt_not_nan = hausdorff_metric(y_pred=predictions[:, 3:4, ...],
-                                                                y=ground_truth[:, 3:4, ...])
+                    # hd95_et, hd95_et_not_nan = hausdorff_metric(y_pred=predictions[:, 1:2, ...],
+                    #                                             y=ground_truth[:, 1:2, ...])
+                    # hd95_tc, hd95_tc_not_nan = hausdorff_metric(y_pred=predictions[:, 2:3, ...],
+                    #                                             y=ground_truth[:, 2:3, ...])
+                    # hd95_wt, hd95_wt_not_nan = hausdorff_metric(y_pred=predictions[:, 3:4, ...],
+                    #                                             y=ground_truth[:, 3:4, ...])
 
                     # post-process Dice and HD95 values
                     # if subject has no enhancing tumor, empty prediction yields Dice of 1 and HD95 of 0
                     # otherwise, false positive yields Dice of 0 and HD95 of 373.13 (worst single case)
-                    if dice_et_not_nan.item() == 0:
-                        if predictions[:, 1:2, ...].max() == 0 and ground_truth[:, 1:2, ...].max() == 0:
-                            dice_et = torch.as_tensor(1)
-                            print('Subject {}, contain ET {}, predict correctly, Dice=1'.format(batch_data['name'],
-                                                                                                ground_truth[:,
-                                                                                                1].max()))
-                        else:
-                            dice_et = torch.as_tensor(0)
-                            print('Subject {}, contain ET {}, predict falsely, Dice=0'.format(batch_data['name'],
-                                                                                              ground_truth[:, 1].max()))
-                    if hd95_et_not_nan.item() == 0:
-                        if predictions[:, 1:2, ...].max() == 0 and ground_truth[:, 1:2, ...].max() == 0:
-                            hd95_et = torch.as_tensor(0)
-                            print('Subject {}, contain ET {}, predict correctly, HD=0'.format(batch_data['name'],
-                                                                                              ground_truth[:, 1].max()))
-                        else:
-                            hd95_et = torch.as_tensor(373.13)
-                            print('Subject {}, contain ET {}, predict falsely, HD=373.13'.format(batch_data['name'],
-                                                                                                 ground_truth[:,
-                                                                                                 1].max()))
-                    if hd95_et.item() == np.inf:
-                        hd95_et = torch.as_tensor(373.13)
-                        print('Subject {}, contain ET {}, predict falsely, HD=373.13'.format(batch_data['name'],
-                                                                                             ground_truth[:, 1].max()))
+                    # if dice_et_not_nan.item() == 0:
+                    #     if predictions[:, 1:2, ...].max() == 0 and ground_truth[:, 1:2, ...].max() == 0:
+                    #         dice_et = torch.as_tensor(1)
+                    #         print('Subject {}, contain ET {}, predict correctly, Dice=1'.format(batch_data['name'],
+                    #                                                                             ground_truth[:,
+                    #                                                                             1].max()))
+                    #     else:
+                    #         dice_et = torch.as_tensor(0)
+                    #         print('Subject {}, contain ET {}, predict falsely, Dice=0'.format(batch_data['name'],
+                    #                                                                           ground_truth[:, 1].max()))
+                    # if hd95_et_not_nan.item() == 0:
+                    #     if predictions[:, 1:2, ...].max() == 0 and ground_truth[:, 1:2, ...].max() == 0:
+                    #         hd95_et = torch.as_tensor(0)
+                    #         print('Subject {}, contain ET {}, predict correctly, HD=0'.format(batch_data['name'],
+                    #                                                                           ground_truth[:, 1].max()))
+                    #     else:
+                    #         hd95_et = torch.as_tensor(373.13)
+                    #         print('Subject {}, contain ET {}, predict falsely, HD=373.13'.format(batch_data['name'],
+                    #                                                                              ground_truth[:,
+                    #                                                                              1].max()))
+                    # if hd95_et.item() == np.inf:
+                    #     hd95_et = torch.as_tensor(373.13)
+                    #     print('Subject {}, contain ET {}, predict falsely, HD=373.13'.format(batch_data['name'],
+                    #                                                                          ground_truth[:, 1].max()))
 
-                    et_metric = {'et_dice': dice_et.item(), 'et_hd': hd95_et.item()}
-                    tc_metric = {'tc_dice': dice_tc.item(), 'tc_hd': hd95_tc.item()}
-                    wt_metric = {'wt_dice': dice_wt.item(), 'wt_hd': hd95_wt.item()}
+                    # et_metric = {'et_dice': dice_et.item(), 'et_hd': hd95_et.item()}
+                    # tc_metric = {'tc_dice': dice_tc.item(), 'tc_hd': hd95_tc.item()}
+                    # wt_metric = {'wt_dice': dice_wt.item(), 'wt_hd': hd95_wt.item()}
+                    #
+                    # avg_dice = (dice_et.item() + dice_tc.item() + dice_wt.item()) / 3
+                    # avg_hd = (hd95_et.item() + hd95_tc.item() + hd95_wt.item()) / 3
+                    # avg_metric = {'avg_dice': avg_dice, 'avg_hd': avg_hd}
+
+                    et_metric = {'et_dice': dice_et.item()}
+                    tc_metric = {'tc_dice': dice_tc.item()}
+                    wt_metric = {'wt_dice': dice_wt.item()}
 
                     avg_dice = (dice_et.item() + dice_tc.item() + dice_wt.item()) / 3
-                    avg_hd = (hd95_et.item() + hd95_tc.item() + hd95_wt.item()) / 3
-                    avg_metric = {'avg_dice': avg_dice, 'avg_hd': avg_hd}
+                    avg_metric = {'avg_dice': avg_dice}
 
                     metric = {**et_metric, **tc_metric, **wt_metric, **avg_metric, 'name': batch_data['name']}
                     metric_meter.update(metric)
+                    print(f'step: {step}, avg_dice: {avg_dice}')
             metric_meter.report(print_stats=True)
 
             checkpoint = {
@@ -434,7 +457,8 @@ def main():
                 'scheduler': scheduler.state_dict(),
                 "epoch": epoch
             }
-            torch.save(checkpoint, os.path.join(save_dir, '{}_Epoch_{}_Dice_{:.3f}_HD_{:.3f}.pkl'.format(model_name, epoch, avg_dice, avg_hd)))
+            # torch.save(checkpoint, os.path.join(save_dir, '{}_Epoch_{}_Dice_{:.3f}_HD_{:.3f}.pkl'.format(model_name, epoch, avg_dice, avg_hd)))
+            print(f'epoch {epoch} avg_dice: {avg_dice}')
 
         # All-Train
         if use_trainset and epoch % eval_interval == 0:

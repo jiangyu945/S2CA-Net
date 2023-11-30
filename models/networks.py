@@ -1707,6 +1707,9 @@ class UNet_LGSM_MCA_MSADC_Plus(SegmentationNetwork):
                       F.interpolate(self.convds0(x0_d), size=size, mode='trilinear', align_corners=False)]
         return out  # , x0_d
 
+    def predictor(self, x):
+        return self.forward(x)['out'][-1]
+
     def get_multi_loss(self, criterion, outputs, targets, is_ds=False):
         if is_ds:
             ## 固定权重
@@ -1716,7 +1719,6 @@ class UNet_LGSM_MCA_MSADC_Plus(SegmentationNetwork):
             loss_out_1 = loss_weight[1] * criterion(outputs['out'][1], targets)
             loss_out_0 = loss_weight[0] * criterion(outputs['out'][0], targets)
             loss_out = loss_out_3 + loss_out_2 + loss_out_1 + loss_out_0
-
         else:
             loss_out = criterion(outputs['out'][-1], targets)
 
