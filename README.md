@@ -50,7 +50,7 @@ In this paper we propose a novel *Shape-Scale Co-Awareness Network* that integra
 
 ## Usage
 ### Data Preparation
-Please download BraTS 2019, BraTS 2020 data according to https://www.med.upenn.edu/cbica/brats2019/data.html and https://www.med.upenn.edu/cbica/brats2020/data.html.  
+Please download BraTS 2019, BraTS 2020 data according to https://ipp.cbica.upenn.edu and https://www.med.upenn.edu/cbica/brats2020/data.html.  
 Unzip downloaded data at `./dataset` folder (please create one) and remove all the csv files in the folder, or it will cause errors.
 The implementation assumes that the data is stored in a directory structure like
 
