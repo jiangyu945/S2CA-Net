@@ -28,8 +28,6 @@ In this paper we propose a novel *Shape-Scale Co-Awareness Network* that integra
 
 ## Results
 ### Quantitative Results
-![Comparison_BraTS_2019](https://github.com/jiangyu945/S2CA-Net/blob/c257a2c983c4852fa26a585e667a282690c2a61d/img/Comparison_BraTS2019.png)
-![Comparison_BraTS_2020](https://github.com/jiangyu945/S2CA-Net/blob/c257a2c983c4852fa26a585e667a282690c2a61d/img/Comparison_BraTS2020.png)
 ![Comparison_BraTS](https://github.com/jiangyu945/S2CA-Net/blob/ca185fef15421e18c2433b3f25c860e71eec05be/img/Comparison.png)
 ### Qualitative Results
 ![vis3d](https://github.com/jiangyu945/S2CA-Net/blob/c257a2c983c4852fa26a585e667a282690c2a61d/img/Visualization_Comparison.png)
