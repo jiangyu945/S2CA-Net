@@ -46,9 +46,9 @@ In this paper we propose a novel *Shape-Scale Co-Awareness Network* that integra
 ## Usage
 ### Installation
 Install the necessary python packages as defined in environment.yaml. We recommend using conda. You can create the environment using
-'''
+```shell
 conda env create -f environment.yml
-'''
+```
 If you run into problems, you can try using different versions of these packages.
 
 ### Data Preparation
