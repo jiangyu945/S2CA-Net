@@ -12,14 +12,14 @@
 
 **Manuscript link:**  
   To be supplemented.
-
+  
+**Citation:**  
+  To be supplemented.
+  
 **Description:**
 
 This repo contains the implementation of 3D segmentation of BraTS 2019, BraTS 2020 with the proposed *Shape-Scale Co-Awareness Network*. 
 
-**Citation:**  
-  To be supplemented.
-  
 ## Methods
 In this paper we propose a novel *Shape-Scale Co-Awareness Network* that integrates CNN, Transformer, and MLP to synchronously capture shape-aware features and scale-aware features to cope with the pattern-agnostic challenges in brain tumor image segmentation.  
 ### Network Framework
