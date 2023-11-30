@@ -87,8 +87,8 @@ We provide ckpt download via Google Drive or Baidu Netdisk. Please download the 
 #### Google Drive
 url: https://drive.google.com/file/d/1OwdKnM51rDvF3UiQDbcCWlPcYdc94-_O/view?usp=sharing
 #### Baidu Netdisk
-url：https://pan.baidu.com/s/14qM2k46mFnzT2RmI3sWcSw  
-extraction code (提取码)：0512  
+url：https://pan.baidu.com/s/10FlPjgh8F2y7RSHFCqRofw?pwd=s67e
+extraction code (提取码)：s67e  
 
 ### Training
 For default training configuration, we use patch-based training pipeline and use Adam optimizer. Deep supervision is utilized to facilitate convergence.
