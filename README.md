@@ -17,7 +17,6 @@
   To be supplemented.
   
 **Description:**
-
 This repo contains the Pytorch implementation of 3D segmentation of BraTS 2019, BraTS 2020 with the proposed *Shape-Scale Co-Awareness Network*. 
 
 ## Methods
@@ -54,8 +53,7 @@ If you run into problems, you can try using different versions of these packages
 ### Data Preparation
 Please download BraTS 2019, BraTS 2020 data according to https://www.med.upenn.edu/cbica/brats2019/registration.html and https://www.med.upenn.edu/cbica/brats2020/registration.html.  
 Unzip downloaded data at `./dataset` folder (please create one) and remove all the csv files in the folder, or it will cause errors.
-The implementation assumes that the data is stored in a directory structure like
-
+The implementation assumes that the data is stored in a directory structure like  
 ./dataset
   - BraTS2019
     -  MICCAI_BraTS_2019_Data_Training_Merge
