@@ -18,7 +18,7 @@
   
 **Description:**
 
-This repo contains the implementation of 3D segmentation of BraTS 2019, BraTS 2020 with the proposed *Shape-Scale Co-Awareness Network*. 
+This repo contains the Pytorch implementation of 3D segmentation of BraTS 2019, BraTS 2020 with the proposed *Shape-Scale Co-Awareness Network*. 
 
 ## Methods
 In this paper we propose a novel *Shape-Scale Co-Awareness Network* that integrates CNN, Transformer, and MLP to synchronously capture shape-aware features and scale-aware features to cope with the pattern-agnostic challenges in brain tumor image segmentation.  
@@ -122,4 +122,5 @@ python inference.py --model s2ca_net --patch_test --validation -c CKPT --tta
 ```
 ### Reference
 [PANet](https://github.com/hsiangyuzhao/PANet)
+
 [TransBTS](https://github.com/Rubics-Xuan/TransBTS)
