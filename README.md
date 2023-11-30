@@ -69,7 +69,7 @@ The implementation assumes that the data is stored in a directory structure like
            BraTS19_2013_1_1_t1ce.nii.gz
            BraTS19_2013_1_1_t2.nii.gz
            BraTS19_2013_1_1_seg.nii.gz
-           ... 
+           - ... 
     -  MICCAI_BraTS_2019_Data_Validation
        - BraTS19_CBICA_AAM_1
          - BraTS19_CBICA_AAM_1_flair.nii.gz
@@ -77,10 +77,12 @@ The implementation assumes that the data is stored in a directory structure like
          - BraTS19_CBICA_AAM_1_t1ce.nii.gz
          - BraTS19_CBICA_AAM_1_t2.nii.gz
        - BraTS19_CBICA_ABT_1
-         ...
+         - ...
   - BraTS2020
     - MICCAI_BraTS2020_TrainingData
+      - ...
     - MICCAI_BraTS2020_ValidationData
+      - ...
 
 ### Pretrained Checkpoint
 We provide ckpt download via Google Drive or Baidu Netdisk. Please download the checkpoint from the url below:  
