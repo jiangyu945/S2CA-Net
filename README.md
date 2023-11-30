@@ -82,7 +82,7 @@ The implementation assumes that the data is stored in a directory structure like
 ### Pretrained Checkpoint
 We provide ckpt download via Google Drive or Baidu Netdisk. Please download the checkpoint from the url below:  
 #### Google Drive
-url: https://drive.google.com/file/d/1OwdKnM51rDvF3UiQDbcCWlPcYdc94-_O/view?usp=sharing
+url: https://drive.google.com/drive/folders/1-7kAjsYoQWBGLjilZVkFkxNCuiHqkOl5?usp=sharing
 #### Baidu Netdisk
 url：https://pan.baidu.com/s/10FlPjgh8F2y7RSHFCqRofw?pwd=s67e
 extraction code (提取码)：s67e  
